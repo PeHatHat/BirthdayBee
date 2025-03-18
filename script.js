@@ -1,14 +1,31 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const giftBoxContainer = document.querySelector('.gift-box-container');
-    const giftBox = document.querySelector('.gift-box');
-    const birthdayGreeting = document.querySelector('.birthday-greeting');
-    const birthdayMusic = document.getElementById('birthday-music');
+function enlargeOpenGiftButton() {
+    let btn = document.getElementById("openGiftButton");
 
-    giftBoxContainer.addEventListener('click', () => {
-        giftBoxContainer.classList.add('hidden');
-        birthdayGreeting.classList.remove('hidden');
+    // Phóng to nút
+    let currentSize = window.getComputedStyle(btn).fontSize;
+    let newSize = parseFloat(currentSize) * 1.2 + "px";
+    btn.style.fontSize = newSize;
+    btn.style.padding = "15px 30px";
 
-        birthdayMusic.currentTime = 0; // Đặt thời gian phát về đầu
-        birthdayMusic.play();         // **Phát nhạc NGAY BÂY GIỜ, sau khi click!**
-    });
-});
+    // Lấy phần tử chatbox
+    const chatBubble = document.querySelector('.chat-bubble');
+    const image = document.querySelector('.custom-image');
+
+    // Nếu chatbox đang ẩn thì hiển thị
+    if (chatBubble.style.display === 'none' || chatBubble.style.display === '') {
+        chatBubble.style.display = 'flex';
+
+        // Hiệu ứng lắc ảnh
+        image.classList.add('shake');
+
+        // Sau 500ms, gỡ bỏ hiệu ứng lắc để có thể kích hoạt lại sau
+        setTimeout(() => {
+            image.classList.remove('shake');
+        }, 500);
+
+        // Ẩn chatbox sau 1.5 giây
+        setTimeout(() => {
+            chatBubble.style.display = 'none';
+        }, 500);
+    }
+}
