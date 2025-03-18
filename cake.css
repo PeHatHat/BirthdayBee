@@ -1,0 +1,424 @@
+/* Định dạng chung */
+body {
+    text-align: center;
+    font-family: 'Lora', serif;
+    background-color: #ffebcd;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Băng rôn */
+.banner {
+    background: #ff69b4;
+    color: white;
+    font-size: 24px;
+    padding: 3px 277px;
+    border-radius: 24px;
+    display: inline-block;
+    margin-bottom: 20px;
+    top: -240px;
+    position: relative;
+}
+
+/* Mặt bàn */
+.table {
+    position: relative;
+    width: 450px;
+    height: 25px;
+    background: linear-gradient(37deg, #a0522d, #8b4513);
+    margin: 50px auto 0;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    top: 169px;
+    z-index: 1;
+}
+
+/* Chân bàn */
+.table::before, .table::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 120px;
+    background: linear-gradient(180deg, #8b4513, #5a2d0c);
+    bottom: -120px;
+    box-shadow: inset 2px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Vị trí chân bàn */
+.table::after {
+    right: 60px;
+    top: 24px;
+}
+
+.table::before {
+    left: 60px;
+    top: 24px;
+}
+
+
+/* Bánh kem */
+.cake {
+    position: relative; /* Quan trọng cho overlay */
+    width: 300px;
+    height: 150px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+/* Các lớp của bánh */
+.layer {
+    position: absolute;
+    height: 50px;
+    background: #ff85a2;
+}
+
+.top {
+    width: 300px;
+    top: 0px;
+    left: 0px;
+    background: #ff85a2;
+    border-radius: 10% 10% 5% 5%;
+}
+
+.middle {
+    width: 330px;
+    top: 46px;
+    left: -14px;
+    background: #ff6699;
+    border-radius: 10% 10% 0 0;
+}
+
+.bottom {
+    width: 400px;
+    left: -46px;
+    top: 95px;
+    background: #ff4d88;
+}
+
+/* Icing */
+.icing {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* Nến */
+.candle {
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: yellow;
+    top: -40px;
+    border-radius: 3px;
+}
+
+/* Lửa */
+.flame {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    background: orange;
+    border-radius: 50%;
+    top: -20px;
+    left: -1px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Khi lửa cháy */
+.flame.lit {
+    mix-blend-mode: screen;
+    opacity: 1;
+    animation: flicker 0.15s infinite alternate ease-in-out, color-glow 1.5s infinite linear;
+    filter: drop-shadow(0 0 40px orange) drop-shadow(0 0 30px red) drop-shadow(0 0 20px yellow);
+}
+
+/* Hiệu ứng cháy lung linh */
+@keyframes flicker {
+    0%   { transform: scale(1)   translateY(0);    opacity: 0.9; }
+    50%  { transform: scale(1.2) translateY(-3px); opacity: 1;   }
+    100% { transform: scale(0.9) translateY(3px);  opacity: 0.85;}
+}
+
+/* Hiệu ứng ánh sáng đổi màu */
+@keyframes color-glow {
+    0%   { background: orange; filter: drop-shadow(0 0 40px orange); }
+    25%  { background: red;    filter: drop-shadow(0 0 35px red);    }
+    50%  { background: yellow; filter: drop-shadow(0 0 45px yellow); }
+    75%  { background: orange; filter: drop-shadow(0 0 35px orange); }
+    100% { background: red;    filter: drop-shadow(0 0 40px red);    }
+}
+
+/* Lớp phủ tối khi thắp nến */
+.dark-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    transition: opacity 0.5s;
+}
+
+/* Làm nổi bật bánh kem */
+.cake.glow {
+    position: relative;
+    z-index: 101; /* Cao hơn dark-mode, thấp hơn wish-container */
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+}
+
+/* Định dạng chung cho nút */
+.cake-button {
+    position: absolute;
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    background-color: #ff69b4;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+    width: 200px;
+    text-align: center;
+}
+
+.cake-button:hover {
+    background-color: #ff1493;
+    transform: scale(0.9);
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+}
+
+/* Nút trên lớp TOP */
+.top-btn {
+    top: 335px;
+    left: -63%;
+}
+
+/* Nút trên lớp MIDDLE */
+.mid-btn {
+    top: 335px;
+    left: 18%;
+}
+
+/* Nút trên lớp BOTTOM */
+.bot-btn {
+    top: 335px;
+    left: 98%;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Ô chứa điều ước và các phần tử con (z-index cao) */
+#wish-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Dưới wish-container, trên cake */
+    display: none;
+}
+
+#wish-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    z-index: 1001; /* Trên wish-overlay */
+    text-align: center;
+}
+
+#wish-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    outline: none;
+    text-align: center;
+    width: 250px;
+}
+
+#send-wish {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#send-wish:hover {
+    background-color: #ff1493;
+    transform: scale(1.1);
+}
+
+.wish-star {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: gold;
+    text-shadow: 0 0 10px gold, 0 0 20px orange;
+    animation: floatAway 3s ease-in-out;
+    z-index: 1002; /* Trên cùng */
+}
+
+@keyframes floatAway {
+    0%   { transform: translateY(0)    rotate(0);   opacity: 1; }
+    100% { transform: translateY(-200px) rotate(720deg); opacity: 0; }
+}
+
+/* Responsive adjustments (ví dụ) */
+@media (max-width: 768px) {
+    .cake {
+        width: 200px;
+        height: auto;
+    }
+    .table {
+        width: 90%;
+        height: 20px;
+        top: 100px;
+    }
+     .table::before, .table::after{
+        height: 60px;
+        bottom: -60px;
+    }
+    .banner {
+        padding: 3px 20px;
+        font-size: 18px;
+        top: -100px;
+    }
+     .cake-button {
+        width: auto;
+        padding: 5px 10px;
+    }
+    .top-btn{
+        left: -90%;
+    }
+    .mid-btn{
+        left: 6%;
+    }
+    .bot-btn{
+        left: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-btn{
+        left: -140%;
+    }
+     .mid-btn{
+        left: 3%;
+    }
+    .bot-btn{
+        left: 70%;
+    }
+}
+
+/* Hiệu ứng ong bay */
+.bee {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-image: url('bee.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+#bee1 {
+    top: 10%; left: 5%;
+    animation: fly1 6s linear infinite;
+}
+
+#bee2 {
+    top: 50%; left: 20%;
+    animation: fly2 6s linear infinite;
+}
+#bee3 {
+    top: 80%; left: 50%;
+    animation: fly3 6s linear infinite;
+}
+#bee4 {
+    top: 30%; left: 70%;
+    animation: fly4 6s linear infinite;
+}
+#bee5 {
+    top: 70%; left: 80%;
+    animation: fly5 6s linear infinite;
+}
+#bee6 {
+    top: 20%; left: 90%;
+    animation: fly6 6s linear infinite;
+}
+/* Định nghĩa chuyển động riêng cho từng con */
+@keyframes fly1 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }    
+    20%  { transform: translateX(80px) translateY(-40px) rotate(10deg) scaleX(-1); } 
+    40%  { transform: translateX(160px) translateY(30px) rotate(-10deg) scaleX(-1); }  
+    60%  { transform: translateX(240px) translateY(-50px) rotate(15deg) scaleX(-1); }  
+    80%  { transform: translateX(160px) translateY(30px) rotate(-10deg) scaleX(1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }  
+}
+
+@keyframes fly2 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }    
+    20%  { transform: translateX(-50px) translateY(30px) rotate(-10deg) scaleX(1); } 
+    40%  { transform: translateX(-100px) translateY(-60px) rotate(15deg) scaleX(1); }  
+    60%  { transform: translateX(-150px) translateY(40px) rotate(-10deg) scaleX(-1); }  
+    80%  { transform: translateX(-80px) translateY(-20px) rotate(10deg) scaleX(-1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }  
+}
+
+@keyframes fly3 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }    
+    15%  { transform: translateX(60px) translateY(20px) rotate(-10deg) scaleX(-1); } 
+    35%  { transform: translateX(120px) translateY(-50px) rotate(10deg) scaleX(-1); }  
+    55%  { transform: translateX(180px) translateY(40px) rotate(-15deg) scaleX(-1); }  
+    75%  { transform: translateX(120px) translateY(-30px) rotate(10deg) scaleX(1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }  
+}
+@keyframes fly4 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(-1); }    
+    20%  { transform: translateX(80px) translateY(-40px) rotate(10deg) scaleX(-1); } 
+    40%  { transform: translateX(160px) translateY(30px) rotate(-10deg) scaleX(-1); }  
+    60%  { transform: translateX(240px) translateY(-50px) rotate(15deg) scaleX(1); }  
+    80%  { transform: translateX(160px) translateY(30px) rotate(-10deg) scaleX(1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }  
+}
+
+@keyframes fly5 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }    
+    20%  { transform: translateX(-50px) translateY(30px) rotate(-10deg) scaleX(1); } 
+    40%  { transform: translateX(-100px) translateY(-60px) rotate(15deg) scaleX(1); }  
+    60%  { transform: translateX(-150px) translateY(40px) rotate(-10deg) scaleX(-1); }  
+    80%  { transform: translateX(-80px) translateY(-20px) rotate(10deg) scaleX(-1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(-1); }  
+}
+
+@keyframes fly6 {
+    0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(-1); }    
+    15%  { transform: translateX(-60px) translateY(20px) rotate(-10deg) scaleX(1); } 
+    35%  { transform: translateX(-120px) translateY(-50px) rotate(10deg) scaleX(1); }  
+    55%  { transform: translateX(-180px) translateY(40px) rotate(-15deg) scaleX(1); }  
+    75%  { transform: translateX(-120px) translateY(-30px) rotate(10deg) scaleX(-1); }  
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scaleX(-1); }  
+}

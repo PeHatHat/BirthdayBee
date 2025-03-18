@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bánh Sinh Nhật</title>
+    <link rel="stylesheet" href="cake.css">
+    <script src="cake.js" defer></script>
+</head>
+
+<div class="bee" id="bee1"></div>
+<div class="bee" id="bee2"></div>
+<div class="bee" id="bee3"></div>
+<div class="bee" id="bee4"></div>
+<div class="bee" id="bee5"></div>
+<div class="bee" id="bee6"></div>
+
+<body>
+    <div class="overlay"></div>
+    
+    <div class="banner">
+        <h1>Chúc Mừng Sinh Nhật Của Bé Ong!</h1>
+    </div>
+    
+    <div class="table"></div>
+    <div class="cake-container">
+        <div class="cake">
+            <div class="overlay"></div>
+            <div id="wish-overlay"></div>
+            <div class="layer top"></div>
+            <button id="light-candles" class="cake-button top-btn">Thắp Nến</button>
+                
+            <div class="layer middle"></div>
+            <button id="make-wish" class="cake-button mid-btn hidden">Điều Ước</button>
+            <!-- Ô nhập điều ước (ban đầu ẩn) -->
+            <div id="wish-container" class="hidden">
+                <input type="text" id="wish-input" placeholder="Nhập điều ước của bạn..." />
+                <button id="send-wish">Gửi</button>
+            </div>            
+
+            <div class="layer bottom"></div>
+            <button id="open-card" class="cake-button bot-btn hidden" onclick="window.location.href='wishes.html'">Thiệp SN của Chú ZÀ</button>
+
+            <div class="icing"></div>
+            <div class="candles">
+                <script>
+                    for (let i = 0; i < 14; i++) {
+                        document.write(`<div class='candle' style='left: ${10 + i * 20}px;'><div class='flame'></div></div>`);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
