@@ -106,3 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
     makeWishBtn.addEventListener("click", handleWish);
     sendWishBtn.addEventListener("click", sendWish);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll("input[name='wish-recipient']");
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            const imgId = `img-${this.value}`;
+            const img = document.getElementById(imgId);
+            img.style.display = this.checked ? "block" : "none";
+        });
+    });
+});

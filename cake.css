@@ -232,7 +232,7 @@ body {
 
 #wish-container {
     position: absolute;
-    top: 50%;
+    top: -170%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -241,16 +241,38 @@ body {
     border-radius: 10px;
     z-index: 1001; /* Trên wish-overlay */
     text-align: center;
+    width: 300px;
+    height: 280px;
 }
 
+/* Ô chọn người nhận điều ước */
+#wish-recipient-container {
+    text-align: left; /* Căn trái toàn bộ nội dung */
+    display: inline-block;
+}
+
+#wish-recipient-container label {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#wish-recipient-container input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.3);
+}
+
+/* Ô nhập điều ước */
 #wish-input {
     padding: 10px;
     font-size: 16px;
     border: 2px solid #ff69b4;
     border-radius: 10px;
     outline: none;
-    text-align: center;
-    width: 250px;
+    text-align: left;
+    width: 90%;
 }
 
 #send-wish {
@@ -280,6 +302,25 @@ body {
     animation: floatAway 3s ease-in-out;
     z-index: 1002; /* Trên cùng */
 }
+
+.wish-image {
+    position: absolute;
+    width: 200px; /* Điều chỉnh kích thước */
+    height: auto;
+    display: none; /* Ẩn mặc định */
+    z-index: 1002; /* Trên cùng */
+}
+
+/* Vị trí từng ảnh */
+#img-jesus { top: -10%; left: -57%; }
+#img-buddha {
+    top: 61%;
+    right: 101%;
+    transform: scaleX(-1);
+}
+#img-bacho { bottom: 36%; left: 85%; }
+#img-yourself { bottom: -26%; right: -56%; }
+
 
 @keyframes floatAway {
     0%   { transform: translateY(0)    rotate(0);   opacity: 1; }

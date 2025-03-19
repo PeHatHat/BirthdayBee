@@ -35,10 +35,28 @@
             <button id="make-wish" class="cake-button mid-btn hidden">Điều Ước</button>
             <!-- Ô nhập điều ước (ban đầu ẩn) -->
             <div id="wish-container" class="hidden">
-                <input type="text" id="wish-input" placeholder="Nhập điều ước của bạn..." />
+                <label for="wish-recipient">Con muốn ai độ ?</label>
+                <div id="wish-recipient-container">
+                    <label><input type="checkbox" name="wish-recipient" value="jesus"> ⛪ Chúa GiêSu</label><br>
+                    <label><input type="checkbox" name="wish-recipient" value="buddha"> 🛕 Phật Tổ</label><br>
+                    <label><input type="checkbox" name="wish-recipient" value="bacho"> ☀️ Bác Hồ kính yêu</label><br>
+                    <label><input type="checkbox" name="wish-recipient" value="yourself"> 😎 Chính bản thân 10 năm sau</label>
+                </div>
+                
+                <br><br>
+            
+                <input type="text" id="wish-input" placeholder="Nhập điều ước của connnn" />
+            
+                <br><br>
+            
                 <button id="send-wish">Gửi</button>
-            </div>            
 
+                <img src="jesus-image.png" id="img-jesus" class="wish-image">
+                <img src="buhda-image.png" id="img-buddha" class="wish-image">
+                <img src="BacHo-image.png" id="img-bacho" class="wish-image">
+                <img src="hngan-removebg.png" id="img-yourself" class="wish-image">
+            </div>
+            
             <div class="layer bottom"></div>
             <button id="open-card" class="cake-button bot-btn hidden" onclick="window.location.href='wishes.html'">Thiệp SN của Chú ZÀ</button>
 
